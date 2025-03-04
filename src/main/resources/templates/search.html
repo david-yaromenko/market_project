@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Product</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container" >
+    <h2>Search Product</h2>
+    <form th:action="@{/product/}" method="get">
+
+        <div th:if="${notProduct}" class="alert alert-danger text-center">
+            <p th:text="${notProduct}"></p>
+        </div>
+
+        <label for="name1">Product name</label>
+        <input type="text" id="name1" name="name" autofocus="autofocus"/> <br/>
+        <input type="submit" value="Search product" />
+
+        <input type="button" value="Back" onclick="window.location.href='/product'">
+    </form>
+</div>
+</body>
+</html>

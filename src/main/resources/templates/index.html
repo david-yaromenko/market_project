@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add product</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Add Product</h2>
+    <form th:action="@{/product/create}" method="post" enctype="multipart/form-data">
+
+        <div th:if="${emptyFieldsProduct}" class="alert alert-danger text-center">
+            <p th:text="${emptyFieldsProduct}"></p>
+        </div>
+
+        <label for="name">Name Product</label>
+        <input type="text" id="name" name="name" autofocus="autofocus"/> <br/>
+        <label for="category">Category</label>
+        <input type="text" id="category" name="category"/> <br/>
+        <label for="price">Price</label>
+        <input type="number" id="price" name="price" autofocus="autofocus"/> <br/>
+        <label for="file1">Image</label>
+        <input type="file" id="file1" name="file1"/> <br/>
+        <label for="file2">Image</label>
+        <input type="file" id="file2" name="file2"/> <br/>
+        <label for="file3">Image</label>
+        <input type="file" id="file3" name="file3"/> <br/>
+
+        <input type="submit" value="Add product"  />
+    </form>
+
+    <input type="button" value="Search product" onclick="window.location.href='/search'">
+    <p></p>
+
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">Log out</button>
+    </form>
+
+</div>
+
+<!--<div>-->
+<!--    <h2>Search Product</h2>-->
+<!--    <form th:action="@{/product/id}" method="get">-->
+<!--        <label for="id">Product name</label>-->
+<!--        <input type="number" id="id" name="id" autofocus="autofocus"/> <br/>-->
+<!--        <input type="submit" value="Search product" />-->
+<!--    </form>-->
+<!--</div>-->
+
+
+</body>
+</html>

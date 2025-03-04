@@ -1,0 +1,57 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Login</title>-->
+<!--    <div>-->
+<!--        <h2>Log in</h2>-->
+
+<!--        <form th:action="@{/login}" method="post">-->
+<!--            <label for="email">Email</label>-->
+<!--            <input type="email" id="email" name="username" autofocus="autofocus"/> <br/>-->
+<!--            <label for="password">Password</label>-->
+<!--            <input type="password" id="password" name="password" autofocus="autofocus"/> <br/>-->
+<!--            <input type="hidden" th:name="_csrf" th:value="${_csrf.token}"> <br/>-->
+
+<!--            <input type="submit" value="Log in" />-->
+<!--        </form>-->
+<!--    </div>-->
+
+<!--</head>-->
+<!--<body>-->
+
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container">
+    <h2>Вход</h2>
+    <form th:action="@{/login}" method="post">
+
+        <div th:if="${param.error}" class="alert alert-danger text-center">
+            Неверный email или пароль!
+        </div>
+
+        <div class="input-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="username" required>
+        </div>
+        <div class="input-group">
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required>
+            <input type="hidden" th:name="_csrf" th:value="${_csrf.token}"> <br/>
+        </div>
+        <button type="submit">Войти</button>
+    </form>
+    <p>Нет аккаунта? <a th:href="@{/registration}">Зарегистрироваться</a></p>
+</div>
+</body>
+</html>
