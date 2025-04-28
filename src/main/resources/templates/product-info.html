@@ -6,19 +6,19 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-<div class="container">
-    <p>Название товара: <span th:text="${product.name}"></span></p>
-    <p>Название категории: <span th:text="${product.category}"></span></p>
-    <p>Цена: <span th:text="${product.price}"></span></p>
-    <p>Картинка:</p>
+<div class="login-container">
 
-    <div th:each="image : ${product.images}">
-        <img th:src="@{/images/{id}(id=${image.id})}" alt="Product Image" width="60px">
+    <p>Name product: <span th:text="${product.name}"></span></p>
+    <p>Category: <span th:text="${product.category}"></span></p>
+    <p>Price: <span th:text="'$' + ${product.price}"></span></p>
+    <p>Images:</p>
+
+    <div th:each="image : ${images}">
+        <img th:src="${image.imageURL}" alt="No images" width="120px">
     </div>
 
-
-    <form th:action="@{/product}" method="get">
-        <input type="submit" value="Back"  />
+    <form th:action="@{/search}" method="get">
+        <button class="login-btn" type="submit">Back to search</button>
     </form>
 </div>
 </body>

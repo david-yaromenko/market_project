@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Service
@@ -20,31 +22,27 @@ public class MapperService {
 
     private final PasswordEncoder passwordEncoder;
 
-    public Product productToEntity(ProductDTO productDTO){
+    public Product productToEntity(ProductDTO productDTO) throws IOException {
         var product = new Product();
         product.setId(productDTO.id());
         product.setName(productDTO.name());
         product.setCategory(productDTO.category());
         product.setPrice(productDTO.price());
-        product.setImagePath(productDTO.imagePath());
-        product.setImages(productDTO.images());
-
         return product;
     }
 
-    public ProductDTO productToDto(Product product, MultipartFile file1, MultipartFile file2, MultipartFile file3){
+    public ProductDTO productToDto(Product product, List<MultipartFile> files) {
         return new ProductDTO(
                 product.getId(),
                 product.getName(),
                 product.getCategory(),
                 product.getPrice(),
-                product.getImagePath(),
-                product.getImages(),
-                file1, file2,file3
+                files
+
         );
     }
 
-    public User userToEntity(UserDTO userDTO){
+    public User userToEntity(UserDTO userDTO) {
         var user = new User();
         user.setId(userDTO.id());
         user.setEmail(userDTO.email().toLowerCase());
@@ -53,7 +51,7 @@ public class MapperService {
         return user;
     }
 
-    public UserDTO userToDTO(User user){
+    public UserDTO userToDTO(User user) {
 
         return new UserDTO(
                 user.getId(),
@@ -62,18 +60,12 @@ public class MapperService {
         );
     }
 
-    public Image imageToEntity(MultipartFile file) throws IOException {
+    public Image imageToEntity(String url, Product product){
+       var image = new Image();
+       image.setImageURL(url);
+       image.setProduct(product);
 
-        Image image = new Image();
-
-        image.setName(file.getName());
-        image.setOriginalFileName(file.getOriginalFilename());
-        image.setContentType(file.getContentType());
-        image.setSizes(file.getSize());
-        image.setBytes(file.getBytes());
-
-        return image;
-
+       return image;
     }
 
 }

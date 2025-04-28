@@ -32,12 +32,12 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-<div class="container">
-    <h2>Вход</h2>
+<div class="login-container">
+    <h2>Log In</h2>
     <form th:action="@{/login}" method="post">
 
         <div th:if="${param.error}" class="alert alert-danger text-center">
-            Неверный email или пароль!
+            Wrong email or пароль!
         </div>
 
         <div class="input-group">
@@ -45,13 +45,14 @@
             <input type="email" id="email" name="username" required>
         </div>
         <div class="input-group">
-            <label for="password">Пароль:</label>
+            <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
             <input type="hidden" th:name="_csrf" th:value="${_csrf.token}"> <br/>
         </div>
-        <button type="submit">Войти</button>
+        <button class="login-btn" type="submit">Log in</button>
+        <p></p><br/>
+        <p class="signup-link">Don't have account? <a th:href="@{/registration}">Registration</a></p>
     </form>
-    <p>Нет аккаунта? <a th:href="@{/registration}">Зарегистрироваться</a></p>
 </div>
 </body>
 </html>

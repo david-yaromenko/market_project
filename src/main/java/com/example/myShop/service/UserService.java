@@ -16,7 +16,7 @@ public class UserService{
     private final UserRepository userRepository;
     private final MapperService mapperService;
 
-    public boolean createUser(UserDTO userDTO){
+    public UserDTO createUser(UserDTO userDTO){
 
         Optional<User> userDb = userRepository.findByEmail(userDTO.email());
         if (userDb.isPresent()){
@@ -26,7 +26,6 @@ public class UserService{
         var entity = mapperService.userToEntity(userDTO);
         entity.setRole("USER");
         var user = userRepository.save(entity);
-        mapperService.userToDTO(user);
-        return true;
+        return mapperService.userToDTO(user);
     }
 }

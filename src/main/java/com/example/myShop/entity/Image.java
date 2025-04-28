@@ -16,18 +16,8 @@ public class Image {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "name")
-    private String name;
-    @Column(name = "contentType")
-    private String contentType;
-    @Column(name = "sizes")
-    private Long sizes;
-    @Column(name = "original_file_name")
-    private String originalFileName;
-
-    @Lob
-    @Column(name = "bytes", columnDefinition = "BYTEA")
-    private byte[] bytes;
+    @Column(name = "image_url")
+    private String imageURL;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "product_id")

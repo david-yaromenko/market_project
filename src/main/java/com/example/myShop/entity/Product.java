@@ -23,8 +23,8 @@ public class Product {
     private String category;
     @Column(name = "price")
     private Float price;
-    @Column(name = "image_path")
-    private String imagePath;
+    @Column(name = "image_preview_url")
+    private String imagePreviewURL;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product")
     private List<Image> images = new ArrayList<>();

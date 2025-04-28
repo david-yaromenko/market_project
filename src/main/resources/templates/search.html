@@ -6,7 +6,7 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-<div class="container" >
+<div class="login-container" >
     <h2>Search Product</h2>
     <form th:action="@{/product/}" method="get">
 
@@ -14,11 +14,13 @@
             <p th:text="${notProduct}"></p>
         </div>
 
+        <div class="input-group">
         <label for="name1">Product name</label>
         <input type="text" id="name1" name="name" autofocus="autofocus"/> <br/>
-        <input type="submit" value="Search product" />
-
-        <input type="button" value="Back" onclick="window.location.href='/product'">
+        </div>
+        <button class="login-btn" type="submit">Search product</button>
+        <p></p><br/>
+        <input class="login-btn" type="button" value="Back" onclick="window.location.href='/product'">
     </form>
 </div>
 </body>

@@ -20,16 +20,17 @@ public class ImageController {
 
     private final ImageRepository imageRepository;
 
-    @GetMapping("/images/{id}")
-    private ResponseEntity<?> getImageById(@PathVariable Long id){
-
-        Image image = imageRepository.findById(id).orElse(null);
-        log.info("Image: {}", image.getOriginalFileName());
-        return ResponseEntity.ok()
-                .header("fileName", image.getOriginalFileName())
-                .contentType(MediaType.valueOf(image.getContentType()))
-                .contentLength(image.getSizes())
-                .body(new InputStreamResource(new ByteArrayInputStream(image.getBytes())));
-    }
+//    @GetMapping("/image/{id}")
+////    private ResponseEntity<?> getImageById(@PathVariable Long id){
+////
+////        Image image = imageRepository.findById(id).orElseThrow(() -> new RuntimeException("Image not found"));
+////        log.info("Image: {}", image.getOriginalFileName());
+////
+////        return ResponseEntity.ok()
+////                .header("fileName", image.getOriginalFileName())
+////                .contentType(MediaType.valueOf(image.getContentType()))
+////                .contentLength(image.getSizes())
+////                .body(new InputStreamResource(new ByteArrayInputStream(image.getBytes())));
+////    }
 
 }

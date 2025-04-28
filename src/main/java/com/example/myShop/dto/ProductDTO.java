@@ -10,10 +10,6 @@ public record ProductDTO(
         String name,
         String category,
         Float price,
-        String imagePath,
-        List<Image> images,
-        MultipartFile file1,
-        MultipartFile file2,
-        MultipartFile file3
+        List<MultipartFile> images
 ) {
 }

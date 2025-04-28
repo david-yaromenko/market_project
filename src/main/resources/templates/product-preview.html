@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Product info</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="login-container">
+
+    <div th:each="product : ${product}">
+        <p th:text="${product.name}"></p>
+        <p th:text="'$' + ${product.price}"></p>
+
+        <div th:if="${notImage}" class="alert alert-danger text-center">
+            <p th:text="${notImage}"></p>
+        </div>
+
+        <div th:if="${imageFromRedis}">
+            <img th:src="${imageFromRedis}" alt="No images" width="120px">
+        </div>
+
+        <div th:unless="${imageFromRedis}">
+            <img th:src="${imageFromRedis}" alt="No images" width="120px">
+        </div>
+
+        <p></p><br/>
+
+        <a th:href="@{/product/info/{id}(id=${product.id})}" class="login-btn">More details</a>
+        <p></p><br/>
+    </div>
+    <p></p><br/>
+    <form th:action="@{/product}" method="get">
+        <button class="login-btn" type="submit">Back</button>
+        <p></p><br/>
+    </form>
+</div>
+</body>
+</html>
